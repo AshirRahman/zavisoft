@@ -1,0 +1,2872 @@
+# M1 Mobile Flutter Boilerplate – Full Code Export
+Generated: 2026-02-26T15:52:50.070365
+
+=========================================
+📂 PROJECT STRUCTURE
+=========================================
+
+├── .env
+├── .env.dev
+├── .env.prod
+├── .env.staging
+├── .flutter-plugins-dependencies
+├── .metadata
+├── 
+│   └── launch.json
+├── README.md
+├── analysis_options.yaml
+├── 
+│   ├── 
+│   └── 
+├── devtools_options.yaml
+├── 
+│   ├── app.dart
+│   ├── 
+│   │   ├── 
+│   │   │   ├── app_bootstrap.dart
+│   │   │   └── dependency_injection.dart
+│   │   ├── 
+│   │   │   ├── app_config.dart
+│   │   │   ├── env.dart
+│   │   │   └── supabase_config.dart
+│   │   ├── 
+│   │   │   ├── app_colors.dart
+│   │   │   ├── app_strings.dart
+│   │   │   └── text_style.dart
+│   │   ├── 
+│   │   │   ├── error_handler.dart
+│   │   │   └── failures.dart
+│   │   ├── 
+│   │   │   ├── extensions.dart
+│   │   │   └── validators.dart
+│   │   ├── 
+│   │   │   ├── app_localizations.dart
+│   │   │   └── 
+│   │   │       ├── en.arb
+│   │   │       └── ko.arb
+│   │   ├── 
+│   │   │   ├── response_data.dart
+│   │   │   └── user_profile.dart
+│   │   ├── 
+│   │   │   ├── api_client.dart
+│   │   │   ├── api_endpoints.dart
+│   │   │   ├── network_info.dart
+│   │   │   └── request_result.dart
+│   │   ├── 
+│   │   │   ├── app_router.dart
+│   │   │   └── app_routes.dart
+│   │   ├── 
+│   │   │   ├── branch_service.dart
+│   │   │   ├── firebase_service.dart
+│   │   │   ├── local_auth_service.dart
+│   │   │   ├── storage_service.dart
+│   │   │   └── supabase_service.dart
+│   │   ├── 
+│   │   │   ├── auth_guard.dart
+│   │   │   └── session_manager.dart
+│   │   ├── 
+│   │   │   └── app_theme.dart
+│   │   ├── 
+│   │   │   └── logger.dart
+│   │   └── 
+│   │       ├── custom_button.dart
+│   │       ├── custom_text_field.dart
+│   │       └── pinned_tab_bar.dart
+│   ├── 
+│   │   ├── 
+│   │   │   └── 
+│   │   │       ├── 
+│   │   │       │   ├── login_controller.dart
+│   │   │       │   └── login_state.dart
+│   │   │       ├── 
+│   │   │       │   └── login_model.dart
+│   │   │       ├── 
+│   │   │       │   └── login_repository.dart
+│   │   │       └── 
+│   │   │           └── login_view.dart
+│   │   ├── 
+│   │   │   ├── 
+│   │   │   │   ├── daraz_listing_controller.dart
+│   │   │   │   └── daraz_listing_state.dart
+│   │   │   ├── 
+│   │   │   │   └── product.dart
+│   │   │   └── 
+│   │   │       └── product_card.dart
+│   │   ├── 
+│   │   │   ├── 
+│   │   │   │   └── home_view.dart
+│   │   │   └── 
+│   │   │       └── header_banner.dart
+│   │   └── 
+│   │       └── 
+│   │           └── profile_view.dart
+│   └── main.dart
+├── pubspec.lock
+├── pubspec.yaml
+├── 
+│   ├── combine-files.dart
+│   └── riverpod_combined.txt
+
+
+=========================================
+📦 SOURCE FILES
+=========================================
+
+============================================================
+FILE: .gitignore
+TYPE: Dart Source File
+SIZE: 0.69 KB
+============================================================
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+============================================================
+
+
+============================================================
+FILE: .vscode\launch.json
+TYPE: Dart Source File
+SIZE: 0.76 KB
+============================================================
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Development",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=APP_ENV=development"
+            ]
+        },
+        {
+            "name": "Staging",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=APP_ENV=staging"
+            ]
+        },
+        {
+            "name": "Production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=APP_ENV=production"
+            ]
+        }
+    ]
+}
+
+============================================================
+
+
+============================================================
+FILE: README.md
+TYPE: Documentation
+SIZE: 1.76 KB
+============================================================
+
+# Daraz-Style Product Listing Architecture
+
+### Mandatory Explanations:
+
+**1. How horizontal swipe was implemented:**
+Horizontal swipe was implemented using Flutter's native `TabBarView` bound to a `DefaultTabController`. This avoids fragile "global hacks" (like wrapping the screen in a `GestureDetector`). The native framework automatically handles horizontal gesture disambiguation, translating horizontal drags into tab switching animations while ignoring vertical scroll gestures, ensuring predictable and intentional behavior.
+
+**2. Who owns the vertical scroll and why:**
+The `NestedScrollView` acts as the master owner of the vertical scroll axis. It coordinates the scroll position between the outer header (`SliverAppBar`) and the inner sliver lists (`CustomScrollView` inside each tab). 
+We use `SliverOverlapAbsorber` in the header and `SliverOverlapInjector` inside each tab's list. This ensures the collapsible banner scrolls out of view smoothly while leaving the `TabBar` pinned, and guarantees that inner lists do not artificially truncate (scroll trap) or jitter. A `PageStorageKey` is assigned to each inner list to perfectly preserve vertical scroll positions when switching tabs.
+
+**3. Trade-offs or limitations of your approach:**
+* **Trade-off:** `NestedScrollView` links the outer header and inner lists tightly. If a user quickly flings the inner list, the momentum transfer to the outer header can sometimes feel slightly rigid compared to a single monolithic `CustomScrollView`.
+* **Trade-off:** State management (filtering) had to be localized to the inner tab widgets rather than centralized through a single getter, slightly duplicating logic across tabs.
+
+---
+
+## Quick Start
+
+```bash
+flutter pub get
+flutter run
+```
+
+**Demo login:** username `test` / password `12345`
+
+============================================================
+
+
+============================================================
+FILE: analysis_options.yaml
+TYPE: Dart Source File
+SIZE: 1.39 KB
+============================================================
+
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+============================================================
+
+
+============================================================
+FILE: devtools_options.yaml
+TYPE: Dart Source File
+SIZE: 0.18 KB
+============================================================
+
+description: This file stores settings for Dart & Flutter DevTools.
+documentation: https://docs.flutter.dev/tools/devtools/extensions#configure-extension-enablement-states
+extensions:
+
+============================================================
+
+
+============================================================
+FILE: lib\app.dart
+TYPE: Dart Source File
+SIZE: 1.42 KB
+============================================================
+
+// riverpod/lib/app.dart
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riverpod_app/core/localization/app_localizations.dart';
+import 'package:riverpod_app/core/routes/app_router.dart';
+import 'package:riverpod_app/core/theme/app_theme.dart';
+
+class App extends ConsumerWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouterProvider);
+
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en'),
+            Locale('ko'),
+          ],
+          localeResolutionCallback: (locale, supportedLocales) {
+            return supportedLocales.first;
+          },
+        );
+      },
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\bootstrap\app_bootstrap.dart
+TYPE: Dart Source File
+SIZE: 0.43 KB
+============================================================
+
+// riverpod/lib/core/bootstrap/app_bootstrap.dart
+import 'package:riverpod_app/core/services/branch_service.dart';
+import 'package:riverpod_app/core/services/firebase_service.dart';
+import 'package:riverpod_app/core/services/supabase_service.dart';
+
+class AppBootstrap {
+  static Future<void> initialize() async {
+    await SupabaseService.initialize();
+    await FirebaseService.initialize();
+    await BranchService.initialize();
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\bootstrap\dependency_injection.dart
+TYPE: Dart Source File
+SIZE: 1.05 KB
+============================================================
+
+// riverpod/lib/core/bootstrap/dependency_injection.dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_app/core/services/branch_service.dart';
+import 'package:riverpod_app/core/services/firebase_service.dart';
+import 'package:riverpod_app/core/services/local_auth_service.dart';
+import 'package:riverpod_app/core/services/storage_service.dart';
+import 'package:riverpod_app/core/services/supabase_service.dart';
+import 'package:riverpod_app/core/session/session_manager.dart';
+
+final supabaseServiceProvider =
+    Provider<SupabaseService>((ref) => SupabaseService.instance);
+final firebaseServiceProvider =
+    Provider<FirebaseService>((ref) => FirebaseService.instance);
+final branchServiceProvider =
+    Provider<BranchService>((ref) => BranchService.instance);
+final localAuthServiceProvider =
+    Provider<LocalAuthService>((ref) => LocalAuthService());
+final storageServiceProvider =
+    Provider<StorageService>((ref) => StorageService());
+final sessionManagerProvider =
+    Provider<SessionManager>((ref) => SessionManager(ref));
+
+============================================================
+
+
+============================================================
+FILE: lib\core\config\app_config.dart
+TYPE: Dart Source File
+SIZE: 0.18 KB
+============================================================
+
+// riverpod/lib/core/config/app_config.dart
+class AppConfig {
+  static const String appName = 'M1 Mobile';
+  static const String version = '1.0.0';
+  // Add feature flags if needed
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\config\env.dart
+TYPE: Dart Source File
+SIZE: 0.86 KB
+============================================================
+
+// lib/core/config/env.dart
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+enum AppFlavor { dev, staging, prod }
+
+class Env {
+  static late AppFlavor flavor;
+
+  static Future<void> load(AppFlavor appFlavor) async {
+    flavor = appFlavor;
+
+    switch (appFlavor) {
+      case AppFlavor.dev:
+        await dotenv.load(fileName: '.env.dev');
+        break;
+
+      case AppFlavor.staging:
+        await dotenv.load(fileName: '.env.staging');
+        break;
+
+      case AppFlavor.prod:
+        await dotenv.load(fileName: '.env.prod');
+        break;
+    }
+  }
+
+  static String get supabaseUrl => dotenv.env['SUPABASE_URL'] ?? '';
+  static String get supabaseAnonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
+  static String get branchKey => dotenv.env['BRANCH_IO_KEY'] ?? '';
+  static String get apiBaseUrl =>
+      dotenv.env['API_BASE_URL'] ?? 'https://fakestoreapi.com';
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\config\supabase_config.dart
+TYPE: Dart Source File
+SIZE: 0.21 KB
+============================================================
+
+// riverpod/lib/core/config/supabase_config.dart
+import 'package:riverpod_app/core/config/env.dart';
+
+class SupabaseConfig {
+  static String url = Env.supabaseUrl;
+  static String anonKey = Env.supabaseAnonKey;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\constants\app_colors.dart
+TYPE: Dart Source File
+SIZE: 1.21 KB
+============================================================
+
+// riverpod/lib/core/constants/app_colors.dart
+import 'package:flutter/material.dart';
+
+class AppColors {
+  // Primary Colors
+  static const Color primary = Colors.deepOrange;
+  static const Color primaryLight = Color(0xFFFFB74D);
+  static const Color primaryDark = Color(0xFFE65100);
+
+  // Background & Surface
+  static const Color background = Colors.white;
+  static const Color surface = Colors.white;
+  static const Color surfaceVariant = Color(0xFFF5F5F5);
+
+  // Text Colors
+  static const Color textPrimary = Color(0xFF212121);
+  static const Color textSecondary = Color(0xFF757575);
+  static const Color textHint = Colors.grey;
+
+  // Status Colors
+  static const Color success = Color(0xFF4CAF50);
+  static const Color warning = Color(0xFFFFA726);
+  static const Color error = Color(0xFFF44336);
+  static const Color info = Color(0xFF2196F3);
+
+  // Special Colors
+  static const Color rating = Colors.amber;
+  static const Color budget = Color(0xFF4CAF50);
+  static const Color discount = Color(0xFFF44336);
+  static const Color border = Color(0xFFEEEEEE);
+  static const Color divider = Color(0xFFBDBDBD);
+
+  // Shadows & Overlays
+  static const Color shadow = Color(0x1F000000);
+  static const Color overlay = Color(0x4D000000);
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\constants\app_strings.dart
+TYPE: Dart Source File
+SIZE: 0.15 KB
+============================================================
+
+// riverpod/lib/core/constants/app_strings.dart
+class AppStrings {
+  static const String login = 'Login';
+  static const String signup = 'Sign Up';
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\constants\text_style.dart
+TYPE: Dart Source File
+SIZE: 0.50 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+TextStyle getTextStyle({
+  double fontSize = 14.0,
+  FontWeight fontWeight = FontWeight.w400,
+  double lineHeight = 21.0,
+  TextAlign textAlign = TextAlign.center,
+  Color color = Colors.black,
+}) {
+  return GoogleFonts.poppins(
+    fontSize: fontSize.sp,
+    fontWeight: fontWeight,
+    height: lineHeight / fontSize,
+    color: color,
+  );
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\errors\error_handler.dart
+TYPE: Dart Source File
+SIZE: 0.74 KB
+============================================================
+
+import 'package:dio/dio.dart';
+import 'package:riverpod_app/core/errors/failures.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Failure handleError(dynamic error) {
+  if (error is DioException) {
+    if (error.type == DioExceptionType.connectionError) {
+      return const Failure('No internet connection');
+    }
+    if (error.response?.statusCode == 401) {
+      return const Failure('Unauthorized request');
+    }
+    return const Failure('Server error occurred');
+  }
+
+  if (error is AuthException) {
+    if (error.message.contains('Invalid login credentials')) {
+      return const Failure('Wrong email or password');
+    }
+    return Failure(error.message);
+  }
+
+  return const Failure('Something went wrong. Please try again.');
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\errors\failures.dart
+TYPE: Dart Source File
+SIZE: 0.11 KB
+============================================================
+
+// riverpod/lib/core/errors/failure.dart
+class Failure {
+  final String message;
+  const Failure(this.message);
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\helpers\extensions.dart
+TYPE: Dart Source File
+SIZE: 0.14 KB
+============================================================
+
+// riverpod/lib/core/helpers/extensions.dart
+extension StringExtension on String? {
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\helpers\validators.dart
+TYPE: Dart Source File
+SIZE: 0.15 KB
+============================================================
+
+// riverpod/lib/core/helpers/validators.dart
+bool isValidEmail(String email) {
+  return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\localization\app_localizations.dart
+TYPE: Dart Source File
+SIZE: 0.64 KB
+============================================================
+
+// riverpod/lib/core/localization/app_localizations.dart
+import 'package:flutter/material.dart';
+
+class AppLocalizations {
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  // Add translations here or load from ARB
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) => ['en', 'ko'].contains(locale.languageCode);
+
+  @override
+  Future<AppLocalizations> load(Locale locale) async => AppLocalizations();
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\localization\locales\en.arb
+TYPE: Localization
+SIZE: 0.09 KB
+============================================================
+
+// riverpod/lib/core/localization/locales/en.arb
+{
+  "appName": "M1 Mobile",
+  "login": "Login"
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\localization\locales\ko.arb
+TYPE: Localization
+SIZE: 0.09 KB
+============================================================
+
+// riverpod/lib/core/localization/locales/ko.arb
+{
+  "appName": "M1 모바일",
+  "login": "로그인"
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\model\response_data.dart
+TYPE: Dart Source File
+SIZE: 0.86 KB
+============================================================
+
+class ResponseData {
+  final bool isSuccess;
+  final int statusCode;
+  final String errorMessage;
+  final dynamic responseData;
+
+  ResponseData({
+    required this.isSuccess,
+    required this.statusCode,
+    required this.errorMessage,
+    required this.responseData,
+  });
+
+  /// Factory constructor for success response
+  factory ResponseData.success({
+    required dynamic data,
+    int statusCode = 200,
+  }) {
+    return ResponseData(
+      isSuccess: true,
+      statusCode: statusCode,
+      errorMessage: '',
+      responseData: data,
+    );
+  }
+
+  /// Factory constructor for error response
+  factory ResponseData.error({
+    required String message,
+    int statusCode = 500,
+  }) {
+    return ResponseData(
+      isSuccess: false,
+      statusCode: statusCode,
+      errorMessage: message,
+      responseData: null,
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\model\user_profile.dart
+TYPE: Dart Source File
+SIZE: 1.16 KB
+============================================================
+
+// class UserProfile {
+//   final int id;
+//   final String username;
+//   final String email;
+//   final String? firstName;
+//   final String? lastName;
+
+//   UserProfile({
+//     required this.id,
+//     required this.username,
+//     required this.email,
+//     this.firstName,
+//     this.lastName,
+//   });
+
+//   String get fullName {
+//     if ((firstName?.isEmpty ?? true) && (lastName?.isEmpty ?? true)) {
+//       return username;
+//     }
+//     return '${firstName ?? ''} ${lastName ?? ''}'.trim();
+//   }
+
+//   factory UserProfile.fromJson(Map<String, dynamic> json) {
+//     return UserProfile(
+//       id: (json['id'] as num?)?.toInt() ?? 0,
+//       username: (json['username'] ?? '') as String,
+//       email: (json['email'] ?? '') as String,
+//       firstName: (json['firstName'] ?? json['name']?['firstname']) as String?,
+//       lastName: (json['lastName'] ?? json['name']?['lastname']) as String?,
+//     );
+//   }
+
+//   Map<String, dynamic> toJson() => {
+//         'id': id,
+//         'username': username,
+//         'email': email,
+//         'firstName': firstName,
+//         'lastName': lastName,
+//       };
+// }
+
+============================================================
+
+
+============================================================
+FILE: lib\core\network\api_client.dart
+TYPE: Dart Source File
+SIZE: 2.63 KB
+============================================================
+
+// riverpod/lib/core/network/api_client.dart
+import 'package:dio/dio.dart';
+
+class ApiClient {
+  static final Dio _dio = Dio();
+
+  /// GET request
+  static Future<Response> get(
+    String url, {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      return await _dio.get(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// POST request
+  static Future<Response> post(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      return await _dio.post(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// PUT request
+  static Future<Response> put(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      return await _dio.put(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// PATCH request
+  static Future<Response> patch(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      return await _dio.patch(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// DELETE request
+  static Future<Response> delete(
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    try {
+      return await _dio.delete(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// Set authorization header
+  static void setAuthToken(String token) {
+    _dio.options.headers['Authorization'] = 'Bearer $token';
+  }
+
+  /// Remove authorization header
+  static void removeAuthToken() {
+    _dio.options.headers.remove('Authorization');
+  }
+
+  /// Add custom headers
+  static void addCustomHeaders(Map<String, String> headers) {
+    _dio.options.headers.addAll(headers);
+  }
+
+  /// Get Dio instance directly (for advanced usage)
+  static Dio get dio => _dio;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\network\api_endpoints.dart
+TYPE: Dart Source File
+SIZE: 0.30 KB
+============================================================
+
+import 'package:riverpod_app/core/config/env.dart';
+
+class ApiEndpoints {
+  static String get baseUrl => Env.apiBaseUrl;
+  static String get loginEndpoint => '$baseUrl/auth/login';
+  static String get usersEndpoint => '$baseUrl/users';
+  static String get productsEndpoint => '$baseUrl/products';
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\network\network_info.dart
+TYPE: Dart Source File
+SIZE: 0.30 KB
+============================================================
+
+// riverpod/lib/core/network/network_info.dart
+import 'package:connectivity_plus/connectivity_plus.dart';
+
+class NetworkInfo {
+  static Future<bool> get isConnected async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+    return connectivityResult != ConnectivityResult.none;
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\network\request_result.dart
+TYPE: Dart Source File
+SIZE: 0.31 KB
+============================================================
+
+// riverpod/lib/core/network/request_result.dart
+sealed class RequestResult<T> {
+  const RequestResult();
+}
+
+class Success<T> extends RequestResult<T> {
+  final T data;
+  const Success(this.data);
+}
+
+class FailureResult<T> extends RequestResult<T> {
+  final String message;
+  const FailureResult(this.message);
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\routes\app_router.dart
+TYPE: Dart Source File
+SIZE: 2.80 KB
+============================================================
+
+// riverpod/lib/core/routes/app_router.dart
+import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:riverpod/core/bootstrap/dependency_injection.dart'; // Import for sessionManagerProvider
+
+// Import your actual screens
+import 'package:riverpod_app/core/routes/app_routes.dart';
+// import 'package:riverpod_app/features/auth/splash/screen/splash_screen.dart';
+import 'package:riverpod_app/features/home/view/home_view.dart';
+import 'package:riverpod_app/features/auth/login/view/login_view.dart';
+import 'package:riverpod_app/features/auth/login/controller/login_controller.dart';
+import 'package:riverpod_app/features/profile/view/profile_view.dart';
+// // Note: You may need to create a dummy HomeScreen if you haven't yet, or use SampleListScreen
+// import 'package:riverpod/features/sample_crud/screens/sample_list_screen.dart';
+
+final appRouterProvider = Provider<GoRouter>((ref) {
+  // Watch only isLoggedIn to avoid router rebuild on every state change
+  final isLoggedIn = ref.watch(loginControllerProvider.select((state) => state.isLoggedIn));
+
+  return GoRouter(
+    initialLocation: AppRoutes.login,
+    // Redirect Logic (Guard) - Handle auth navigation
+    redirect: (context, state) {
+      final isGoingToLogin = state.matchedLocation == AppRoutes.login;
+
+      // If not logged in and not on login page, go to login
+      if (!isLoggedIn && !isGoingToLogin) {
+        return AppRoutes.login;
+      }
+
+      // If logged in and on login page, go to home
+      if (isLoggedIn && isGoingToLogin) {
+        return AppRoutes.home;
+      }
+
+      return null; // No redirect needed
+    },
+    //   final isLoggedIn = session.isLoggedIn;
+    //   final isLoggingIn = state.matchedLocation == AppRoutes.login ||
+    //       state.matchedLocation == AppRoutes.signup;
+    //   final isSplash = state.matchedLocation == AppRoutes.splash;
+
+    //   // Allow splash to finish its job (Splash screen usually handles its own navigation,
+    //   // but strictly speaking, if we are on splash, we might want to wait.
+    //   // For this logic, we rely on the Splash screen to push to /login or /home,
+    //   // OR we can let this redirect handler do it immediately.)
+
+    //   // Strict Guard:
+    //   if (!isLoggedIn && !isLoggingIn && !isSplash) {
+    //     return AppRoutes.login;
+    //   }
+
+    //   if (isLoggedIn && isLoggingIn) {
+    //     return AppRoutes.home;
+    //   }
+
+    routes: [
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomeView(),
+      ),
+
+      // Login Route
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (context, state) => const LoginView(),
+      ),
+
+      // Profile Route
+      GoRoute(
+        path: AppRoutes.profile,
+        builder: (context, state) => const ProfileView(),
+      ),
+    ],
+  );
+});
+
+============================================================
+
+
+============================================================
+FILE: lib\core\routes\app_routes.dart
+TYPE: Dart Source File
+SIZE: 0.22 KB
+============================================================
+
+// riverpod/lib/core/routes/app_routes.dart
+class AppRoutes {
+  static const String splash = '/';
+  static const String login = '/login';
+  static const String home = '/home';
+  static const String profile = '/profile';
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\services\branch_service.dart
+TYPE: Dart Source File
+SIZE: 0.44 KB
+============================================================
+
+// riverpod/lib/core/services/branch_service.dart
+import 'package:flutter_branch_sdk/flutter_branch_sdk.dart';
+import 'package:riverpod_app/core/config/env.dart';
+
+class BranchService {
+  static BranchService? _instance;
+  static BranchService get instance => _instance ??= BranchService._();
+
+  BranchService._();
+
+  static Future<void> initialize() async {
+    FlutterBranchSdk.initSession();
+    FlutterBranchSdk.setIdentity(Env.branchKey);
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\services\firebase_service.dart
+TYPE: Dart Source File
+SIZE: 0.65 KB
+============================================================
+
+// riverpod/lib/core/services/firebase_service.dart
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
+class FirebaseService {
+  static FirebaseService? _instance;
+  static FirebaseService get instance => _instance ??= FirebaseService._();
+
+  FirebaseService._();
+
+  static Future<void> initialize() async {
+    await Firebase.initializeApp();
+    await FirebaseMessaging.instance.requestPermission();
+    FirebaseAnalytics.instance;
+    FirebaseCrashlytics.instance;
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\services\local_auth_service.dart
+TYPE: Dart Source File
+SIZE: 0.44 KB
+============================================================
+
+// riverpod/lib/core/services/local_auth_service.dart
+import 'package:local_auth/local_auth.dart';
+
+class LocalAuthService {
+  final LocalAuthentication _auth = LocalAuthentication();
+
+  Future<bool> authenticate() async {
+    try {
+      return await _auth.authenticate(
+        localizedReason: 'Authenticate to access',
+        options: const AuthenticationOptions(biometricOnly: true),
+      );
+    } catch (e) {
+      return false;
+    }
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\services\storage_service.dart
+TYPE: Dart Source File
+SIZE: 0.46 KB
+============================================================
+
+// riverpod/lib/core/services/storage_service.dart
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class StorageService {
+  final FlutterSecureStorage _storage = const FlutterSecureStorage();
+
+  Future<void> write(String key, String value) async =>
+      await _storage.write(key: key, value: value);
+  Future<String?> read(String key) async => await _storage.read(key: key);
+  Future<void> delete(String key) async => await _storage.delete(key: key);
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\services\supabase_service.dart
+TYPE: Dart Source File
+SIZE: 0.54 KB
+============================================================
+
+// riverpod/lib/core/services/supabase_service.dart
+import 'package:riverpod_app/core/config/supabase_config.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class SupabaseService {
+  static SupabaseService? _instance;
+  static SupabaseService get instance => _instance ??= SupabaseService._();
+
+  SupabaseService._();
+
+  static Future<void> initialize() async {
+    await Supabase.initialize(
+      url: SupabaseConfig.url,
+      anonKey: SupabaseConfig.anonKey,
+    );
+  }
+
+  SupabaseClient get client => Supabase.instance.client;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\session\auth_guard.dart
+TYPE: Dart Source File
+SIZE: 0.45 KB
+============================================================
+
+// riverpod/lib/core/session/auth_guard.dart
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_app/core/bootstrap/dependency_injection.dart';
+
+String? authGuard(BuildContext context, GoRouterState state, WidgetRef ref) {
+  final session = ref.read(sessionManagerProvider);
+  if (!session.isLoggedIn) {
+    return '/login';
+  }
+  return null;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\session\session_manager.dart
+TYPE: Dart Source File
+SIZE: 0.71 KB
+============================================================
+
+// riverpod/lib/core/session/session_manager.dart
+import 'package:flutter/material.dart';
+// import 'package:riverpod/core/services/supabase_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
+
+// Extend ChangeNotifier!
+class SessionManager extends ChangeNotifier {
+  final Ref ref;
+
+  SessionManager(this.ref) {
+    // Listen to Supabase auth changes
+    // SupabaseService.instance.client.auth.onAuthStateChange.listen((data) {
+    //   // Notify the router whenever Auth state changes (login/logout)
+    //   notifyListeners();
+    // });
+  }
+
+  bool get isLoggedIn => false;
+  // SupabaseService.instance.client.auth.currentUser != null;
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\theme\app_theme.dart
+TYPE: Dart Source File
+SIZE: 0.20 KB
+============================================================
+
+// riverpod/lib/core/theme/app_theme.dart
+import 'package:flutter/material.dart';
+
+class AppTheme {
+  static final ThemeData light = ThemeData.light();
+  static final ThemeData dark = ThemeData.dark();
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\utils\logger.dart
+TYPE: Dart Source File
+SIZE: 0.10 KB
+============================================================
+
+// riverpod/lib/core/utils/logger.dart
+import 'package:logger/logger.dart';
+
+final logger = Logger();
+
+============================================================
+
+
+============================================================
+FILE: lib\core\widgets\custom_button.dart
+TYPE: Dart Source File
+SIZE: 2.78 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+
+class CustomButton extends StatelessWidget {
+  final String text;
+  final VoidCallback? onPressed;
+  final bool isLoading;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final double? width;
+  final double? height;
+  final double? borderRadius;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool isEnabled;
+  final EdgeInsets? padding;
+  final Border? border;
+
+  const CustomButton({
+    super.key,
+    required this.text,
+    this.onPressed,
+    this.isLoading = false,
+    this.backgroundColor,
+    this.textColor,
+    this.width,
+    this.height,
+    this.borderRadius,
+    this.fontSize,
+    this.fontWeight,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.isEnabled = true,
+    this.padding,
+    this.border,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width ?? double.infinity,
+      height: height ?? 56.h,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: isEnabled
+            ? (backgroundColor ?? AppColors.primary)
+            : AppColors.textSecondary.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
+        border: border,
+      ),
+      child: MaterialButton(
+        onPressed: isLoading || !isEnabled ? null : onPressed,
+        elevation: 0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (prefixIcon != null) ...[
+              prefixIcon!,
+              const SizedBox(width: 8),
+            ],
+            if (isLoading)
+              SizedBox(
+                height: 20.h,
+                width: 20.w,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    textColor ?? AppColors.background,
+                  ),
+                  strokeWidth: 2,
+                ),
+              )
+            else
+              Text(
+                text,
+                style: getTextStyle(
+                  fontSize: fontSize ?? 16,
+                  fontWeight: fontWeight ?? FontWeight.w600,
+                  lineHeight: (fontSize ?? 16) * 1.5,
+                  color: textColor ?? AppColors.background,
+                ),
+              ),
+            if (suffixIcon != null && !isLoading) ...[
+              const SizedBox(width: 8),
+              suffixIcon!,
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\widgets\custom_text_field.dart
+TYPE: Dart Source File
+SIZE: 2.68 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+
+class CustomTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final String? hintText;
+  final String? labelText;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final int? maxLines;
+  final int? minLines;
+  final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
+  final TextInputAction? textInputAction;
+  final bool readOnly;
+  final VoidCallback? onTap;
+  final Color? fillColor;
+  final Color? borderColor;
+  final Color? focusedBorderColor;
+  final double? borderRadius;
+
+  const CustomTextField({
+    super.key,
+    this.controller,
+    this.hintText,
+    this.labelText,
+    this.keyboardType = TextInputType.text,
+    this.obscureText = false,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.maxLines = 1,
+    this.minLines,
+    this.validator,
+    this.onChanged,
+    this.textInputAction,
+    this.readOnly = false,
+    this.onTap,
+    this.fillColor,
+    this.borderColor,
+    this.focusedBorderColor,
+    this.borderRadius,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      maxLines: obscureText ? 1 : maxLines,
+      minLines: minLines,
+      validator: validator,
+      onChanged: onChanged,
+      textInputAction: textInputAction,
+      readOnly: readOnly,
+      onTap: onTap,
+      decoration: InputDecoration(
+        hintText: hintText,
+        labelText: labelText,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        filled: true,
+        fillColor: fillColor ?? AppColors.surfaceVariant,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 8),
+          borderSide: BorderSide(
+            color: borderColor ?? Colors.grey.shade300,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 8),
+          borderSide: BorderSide(
+            color: borderColor ?? Colors.grey.shade300,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 8),
+          borderSide: BorderSide(
+            color: focusedBorderColor ?? AppColors.primary,
+            width: 2.w,
+          ),
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      ),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\core\widgets\pinned_tab_bar.dart
+TYPE: Dart Source File
+SIZE: 0.65 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+
+class PinnedTabBar extends SliverPersistentHeaderDelegate {
+  final Widget child;
+
+  PinnedTabBar(this.child);
+
+  @override
+  double get minExtent => 48;
+
+  @override
+  double get maxExtent => 48;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return SizedBox.expand(
+      child: Container(color: AppColors.background, child: child),
+    );
+  }
+
+  @override
+  bool shouldRebuild(covariant PinnedTabBar oldDelegate) {
+    return oldDelegate.child != child;
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\auth\login\controller\login_controller.dart
+TYPE: Dart Source File
+SIZE: 1.69 KB
+============================================================
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:riverpod_app/core/model/user_profile.dart';
+import '../repository/login_repository.dart';
+import 'login_state.dart';
+
+final loginControllerProvider =
+    StateNotifierProvider<LoginController, LoginState>(
+  (ref) => LoginController(),
+);
+
+class LoginController extends StateNotifier<LoginState> {
+  LoginController() : super(LoginState());
+
+  /// Login with username and password (API Call with Dummy Credentials)
+  Future<void> login({
+    required String username,
+    required String password,
+  }) async {
+    state = state.copyWith(isLoading: true, clearError: true);
+
+    try {
+      // Call the login API (supports dummy credentials: testuser/password123)
+      final loginResponse = await LoginRepository.login(
+        username: username,
+        password: password,
+      );
+
+      // Create user profile from response
+      final userProfile = UserProfile(
+        id: 1,
+        username: username,
+        email: '$username@example.com',
+        firstName: username,
+        lastName: 'User',
+      );
+
+      state = state.copyWith(
+        isLoggedIn: true,
+        isLoading: false,
+        token: loginResponse.token,
+        loginResponse: loginResponse,
+        userProfile: userProfile,
+      );
+    } catch (e) {
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString().replaceAll('Exception: ', ''),
+        userProfile: null,
+      );
+    }
+  }
+
+  /// Logout
+  void logout() {
+    state = LoginState();
+  }
+
+  /// Clear error message
+  void clearError() {
+    state = state.copyWith(clearError: true, userProfile: state.userProfile);
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\auth\login\controller\login_state.dart
+TYPE: Dart Source File
+SIZE: 1.07 KB
+============================================================
+
+import 'package:riverpod_app/features/auth/login/model/login_model.dart';
+import 'package:riverpod_app/core/model/user_profile.dart';
+
+class LoginState {
+  final bool isLoading;
+  final bool isLoggedIn;
+  final LoginResponse? loginResponse;
+  final UserProfile? userProfile;
+  final String? errorMessage;
+  final String? token;
+
+  LoginState({
+    this.isLoading = false,
+    this.isLoggedIn = false,
+    this.loginResponse,
+    this.userProfile,
+    this.errorMessage,
+    this.token,
+  });
+
+  LoginState copyWith({
+    bool? isLoading,
+    bool? isLoggedIn,
+    LoginResponse? loginResponse,
+    UserProfile? userProfile,
+    String? errorMessage,
+    String? token,
+    bool clearError = false,
+  }) {
+    return LoginState(
+      isLoading: isLoading ?? this.isLoading,
+      isLoggedIn: isLoggedIn ?? this.isLoggedIn,
+      loginResponse: loginResponse ?? this.loginResponse,
+      userProfile: userProfile ?? this.userProfile,
+      errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
+      token: token ?? this.token,
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\auth\login\model\login_model.dart
+TYPE: Dart Source File
+SIZE: 0.00 KB
+============================================================
+
+
+
+============================================================
+
+
+============================================================
+FILE: lib\features\auth\login\repository\login_repository.dart
+TYPE: Dart Source File
+SIZE: 1.39 KB
+============================================================
+
+import 'package:riverpod_app/core/network/api_client.dart';
+import 'package:riverpod_app/core/network/api_endpoints.dart';
+import 'package:dio/dio.dart';
+import '../model/login_response.dart';
+
+class LoginRepository {
+  /// Login with username and password (Dummy credentials support)
+  static Future<LoginResponse> login({
+    required String username,
+    required String password,
+  }) async {
+    try {
+      // Dummy credentials - allow test login without API
+      const dummyUsername = 'test';
+      const dummyPassword = '12345';
+
+      if (username == dummyUsername && password == dummyPassword) {
+        // Simulate API delay
+        await Future.delayed(const Duration(milliseconds: 1500));
+
+        // Return dummy token
+        return LoginResponse(
+          token: 'dummy_token_${DateTime.now().millisecondsSinceEpoch}',
+        );
+      }
+
+      // Try real API call for non-dummy credentials
+      final response = await ApiClient.post(
+        ApiEndpoints.loginEndpoint,
+        data: {
+          'username': username,
+          'password': password,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return LoginResponse.fromJson(response.data);
+      } else {
+        throw Exception('Login failed: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      throw Exception('Login error: ${e.toString()}');
+    }
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\auth\login\view\login_view.dart
+TYPE: Dart Source File
+SIZE: 5.57 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riverpod_app/core/widgets/custom_text_field.dart';
+import 'package:riverpod_app/core/widgets/custom_button.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+
+import '../controller/login_controller.dart';
+
+class LoginView extends ConsumerStatefulWidget {
+  const LoginView({super.key});
+
+  @override
+  ConsumerState<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends ConsumerState<LoginView> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isLoading = ref.watch(loginControllerProvider.select((state) => state.isLoading));
+    final errorMessage = ref.watch(loginControllerProvider.select((state) => state.errorMessage));
+
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(24.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 40.h),
+                Icon(Icons.storefront, size: 64.sp, color: AppColors.primary),
+                SizedBox(height: 24.h),
+                Text(
+                  'ZaviMart Login',
+                  style: getTextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    lineHeight: 36,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Enter your username and password',
+                  style: getTextStyle(
+                    fontSize: 14,
+                    lineHeight: 21,
+                    color: AppColors.textSecondary,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'Demo: test / 12345',
+                    style: getTextStyle(
+                      fontSize: 12,
+                      lineHeight: 18,
+                      color: AppColors.primary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                if (errorMessage != null) ...[
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.error.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      errorMessage!,
+                      style: getTextStyle(
+                        fontSize: 14,
+                        lineHeight: 21,
+                        color: AppColors.error,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                CustomTextField(
+                  controller: _usernameController,
+                  labelText: 'Username',
+                  hintText: 'Enter username',
+                  prefixIcon: const Icon(Icons.person),
+                  borderRadius: 8,
+                  readOnly: isLoading,
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  controller: _passwordController,
+                  labelText: 'Password',
+                  hintText: 'Enter password',
+                  obscureText: true,
+                  prefixIcon: const Icon(Icons.lock),
+                  borderRadius: 8,
+                  readOnly: isLoading,
+                ),
+                const SizedBox(height: 28),
+                CustomButton(
+                  text: 'Login',
+                  onPressed: () {
+                    final username = _usernameController.text.trim();
+                    final password = _passwordController.text.trim();
+
+                    if (username.isEmpty || password.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please fill all fields')),
+                      );
+                      return;
+                    }
+
+                    // Call login - GoRouter will handle navigation via redirect
+                    ref.read(loginControllerProvider.notifier).login(
+                          username: username,
+                          password: password,
+                        );
+                  },
+                  isLoading: isLoading,
+                  isEnabled: !isLoading,
+                  height: 56,
+                  backgroundColor: AppColors.primary,
+                  textColor: AppColors.background,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\daraz_listing\controller\daraz_listing_controller.dart
+TYPE: Dart Source File
+SIZE: 1.36 KB
+============================================================
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_app/core/network/api_client.dart';
+import 'package:riverpod_app/core/network/api_endpoints.dart';
+
+import '../model/product.dart';
+import 'daraz_listing_state.dart';
+
+final darazListingProvider =
+    StateNotifierProvider<DarazListingController, DarazListingState>(
+  (ref) => DarazListingController(),
+);
+
+class DarazListingController extends StateNotifier<DarazListingState> {
+  DarazListingController() : super(DarazListingState());
+
+  /// Fetches all products from the Fakestore API.
+  Future<void> loadProducts() async {
+    state = state.copyWith(isLoading: true, clearError: true);
+
+    try {
+      final response = await ApiClient.get(ApiEndpoints.productsEndpoint);
+      final products = (response.data as List)
+          .map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+      state = state.copyWith(
+        products: products,
+        isLoading: false,
+      );
+    } catch (e) {
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: e.toString(),
+      );
+    }
+  }
+
+  /// Changes the active tab index. The view re-filters via [DarazListingState.filteredProducts].
+  void changeTab(int index) {
+    if (index == state.selectedTabIndex) return;
+    state = state.copyWith(selectedTabIndex: index);
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\daraz_listing\controller\daraz_listing_state.dart
+TYPE: Dart Source File
+SIZE: 1.20 KB
+============================================================
+
+import '../model/product.dart';
+
+class DarazListingState {
+  final bool isLoading;
+  final List<Product> products;
+  final int selectedTabIndex;
+  final String? errorMessage;
+
+  DarazListingState({
+    this.isLoading = false,
+    this.products = const [],
+    this.selectedTabIndex = 0,
+    this.errorMessage,
+  });
+
+  /// Filtered products based on tab index:
+  /// 0 = For You (all products)
+  /// 1 = Top Rated (rating >= 4.0)
+  /// 2 = Budget (price < 50)
+  List<Product> get filteredProducts {
+    switch (selectedTabIndex) {
+      case 1:
+        return products.where((p) => (p.rating ?? 0) >= 4.0).toList();
+      case 2:
+        return products.where((p) => p.price < 50).toList();
+      default:
+        return products;
+    }
+  }
+
+  DarazListingState copyWith({
+    bool? isLoading,
+    List<Product>? products,
+    int? selectedTabIndex,
+    String? errorMessage,
+    bool clearError = false,
+  }) {
+    return DarazListingState(
+      isLoading: isLoading ?? this.isLoading,
+      products: products ?? this.products,
+      selectedTabIndex: selectedTabIndex ?? this.selectedTabIndex,
+      errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\daraz_listing\model\product.dart
+TYPE: Dart Source File
+SIZE: 0.77 KB
+============================================================
+
+class Product {
+  final int id;
+  final String title;
+  final double price;
+  final String image;
+  final double? rating;
+  final String? category;
+
+  Product({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.image,
+    this.rating,
+    this.category,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'] as int,
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+      image: json['image'] as String,
+      rating: (json['rating'] as Map<String, dynamic>?)?['rate'] != null
+          ? ((json['rating'] as Map<String, dynamic>)['rate'] as num).toDouble()
+          : null,
+      category: json['category'] as String?,
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\daraz_listing\widget\product_card.dart
+TYPE: Dart Source File
+SIZE: 3.02 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+
+import '../model/product.dart';
+
+class ProductCard extends StatelessWidget {
+  final Product product;
+  const ProductCard({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+      elevation: 1,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+      child: Padding(
+        padding: EdgeInsets.all(12.w),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Product image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.network(
+                product.image,
+                width: 80.w,
+                height: 80.w,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 80.w,
+                  height: 80.w,
+                  color: Colors.grey.shade200,
+                  child: Icon(Icons.image, size: 32.sp, color: Colors.grey),
+                ),
+              ),
+            ),
+            SizedBox(width: 12.w),
+
+            // Product details
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: getTextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      lineHeight: 20,
+                    ),
+                  ),
+                  SizedBox(height: 6.h),
+                  Text(
+                    '\$${product.price.toStringAsFixed(2)}',
+                    style: getTextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      lineHeight: 24,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                  if (product.rating != null) ...[
+                    SizedBox(height: 4.h),
+                    Row(
+                      children: [
+                        Icon(Icons.star, size: 16.sp, color: AppColors.rating),
+                        SizedBox(width: 4.w),
+                        Text(
+                          '${product.rating}',
+                          style: getTextStyle(
+                            fontSize: 12,
+                            lineHeight: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\home\view\home_view.dart
+TYPE: Dart Source File
+SIZE: 6.98 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_refresh/easy_refresh.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+import 'package:riverpod_app/features/auth/login/controller/login_controller.dart';
+import 'package:riverpod_app/features/auth/login/view/login_view.dart';
+import 'package:riverpod_app/features/daraz_listing/controller/daraz_listing_controller.dart';
+import 'package:riverpod_app/features/daraz_listing/widget/product_card.dart';
+import '../widget/header_banner.dart';
+
+const List<String> homeTabs = ['For You', 'Top Rated', 'Budget'];
+
+class HomeView extends ConsumerWidget {
+  const HomeView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isLoggedIn = ref.watch(loginControllerProvider.select((state) => state.isLoggedIn));
+    final userProfile = ref.watch(loginControllerProvider.select((state) => state.userProfile));
+
+    // Trigger initial API call without rebuilding HomeView on isLoading changes
+    ref.listen(darazListingProvider, (previous, next) {
+      if (next.products.isEmpty && !next.isLoading && next.errorMessage == null) {
+        ref.read(darazListingProvider.notifier).loadProducts();
+      }
+    }, fireImmediately: true);
+
+    if (!isLoggedIn) {
+      return const LoginView();
+    }
+
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: Container(
+        color: AppColors.primary, // orange shows only behind the status bar
+        child: SafeArea(
+          bottom: false,
+          child: Container(
+            color: AppColors.background,
+            // 1. DefaultTabController binds the TabBar and TabBarView naturally
+            child: DefaultTabController(
+              length: homeTabs.length,
+              child: EasyRefresh(
+                header: const MaterialHeader(color: AppColors.primary),
+                onRefresh: () async {
+                  await ref.read(darazListingProvider.notifier).loadProducts();
+                },
+                // 2. NestedScrollView is the MASTER OWNER of the vertical scroll
+                child: NestedScrollView(
+                  headerSliverBuilder: (context, innerBoxIsScrolled) {
+                    return [
+                      // 3. OverlapAbsorber syncs the header scroll with the inner lists
+                      SliverOverlapAbsorber(
+                        handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                            context),
+                        sliver: SliverAppBar(
+                          pinned: true,
+                          toolbarHeight:
+                              0, // No extra space above TabBar when collapsed
+                          expandedHeight:
+                              200, // Must fit HeaderBanner (~170px content)
+                          backgroundColor: AppColors.primary,
+                          flexibleSpace: FlexibleSpaceBar(
+                            background:
+                                HeaderBanner(user: userProfile),
+                          ),
+                          // 4. Native TabBar acts as the sticky header
+                          bottom: TabBar(
+                            indicatorColor: AppColors.background,
+                            labelColor: AppColors.background,
+                            unselectedLabelColor:
+                                AppColors.background.withOpacity(0.6),
+                            indicatorWeight: 3,
+                            labelStyle: getTextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.background,
+                            ),
+                            unselectedLabelStyle: getTextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.background.withOpacity(0.6),
+                            ),
+                            tabs: homeTabs
+                                .map((title) => Tab(text: title))
+                                .toList(),
+                          ),
+                        ),
+                      ),
+                    ];
+                  },
+                  // 5. Native TabBarView handles horizontal swipe without scroll conflict
+                  body: const TabBarView(
+                    children: [
+                      _ProductListTab(tabIndex: 0),
+                      _ProductListTab(tabIndex: 1),
+                      _ProductListTab(tabIndex: 2),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inner Tab Widget to handle separate scroll states and filtering
+class _ProductListTab extends ConsumerWidget {
+  final int tabIndex;
+  const _ProductListTab({required this.tabIndex});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(darazListingProvider.select((state) => state.products));
+    final isLoading = ref.watch(darazListingProvider.select((state) => state.isLoading));
+    final errorMessage = ref.watch(darazListingProvider.select((state) => state.errorMessage));
+
+    // Filtering logic purely inside the tab to avoid full screen re-renders
+    final allProducts = products;
+    final filteredProducts = tabIndex == 1
+        ? allProducts.where((p) => (p.rating ?? 0) >= 4.0).toList()
+        : tabIndex == 2
+            ? allProducts.where((p) => p.price < 50).toList()
+            : allProducts;
+
+    return CustomScrollView(
+      // PageStorageKey ensures vertical scroll position is saved when switching tabs
+      key: PageStorageKey<String>('tab_$tabIndex'),
+      slivers: [
+        // Injector pushes the list down so it's not hidden behind the pinned TabBar
+        SliverOverlapInjector(
+          handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+        ),
+        if (isLoading)
+          const SliverFillRemaining(
+            child: Center(
+                child: CircularProgressIndicator(color: AppColors.primary)),
+          )
+        else if (errorMessage != null)
+          SliverFillRemaining(
+            child: Center(child: Text('Error: $errorMessage')),
+          )
+        else if (filteredProducts.isEmpty)
+          const SliverFillRemaining(
+            child: Center(child: Text('No products found')),
+          )
+        else
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 8, bottom: 24),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) =>
+                    ProductCard(product: filteredProducts[index]),
+                childCount: filteredProducts.length,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\home\widget\header_banner.dart
+TYPE: Dart Source File
+SIZE: 2.92 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:riverpod_app/core/model/user_profile.dart';
+import 'package:riverpod_app/core/widgets/custom_text_field.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+import 'package:riverpod_app/core/routes/app_routes.dart';
+
+class HeaderBanner extends StatefulWidget {
+  final UserProfile? user;
+  const HeaderBanner({super.key, this.user});
+
+  @override
+  State<HeaderBanner> createState() => _HeaderBannerState();
+}
+
+class _HeaderBannerState extends State<HeaderBanner> {
+  late TextEditingController _searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.primary,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Greeting + Profile Avatar
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () => context.push(AppRoutes.profile),
+                child: CircleAvatar(
+                  radius: 24.r,
+                  backgroundColor: AppColors.background,
+                  child: Text(
+                    widget.user?.firstName?.isNotEmpty == true
+                        ? widget.user!.firstName![0].toUpperCase()
+                        : 'S',
+                    style: getTextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 12.w),
+              Expanded(
+                child: Text(
+                  'Hello, ${widget.user?.firstName ?? 'Shopper'}',
+                  style: getTextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    lineHeight: 30,
+                    color: AppColors.background,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 12.h),
+          CustomTextField(
+            controller: _searchController,
+            hintText: 'Search products',
+            prefixIcon: const Icon(Icons.search, color: Color(0xFF757575)),
+            borderRadius: 8,
+            fillColor: AppColors.background,
+            borderColor: AppColors.background,
+            focusedBorderColor: AppColors.primary,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\features\profile\view\profile_view.dart
+TYPE: Dart Source File
+SIZE: 4.31 KB
+============================================================
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:riverpod_app/core/constants/text_style.dart';
+import 'package:riverpod_app/core/constants/app_colors.dart';
+import 'package:riverpod_app/core/routes/app_routes.dart';
+import 'package:riverpod_app/core/widgets/custom_button.dart';
+
+import '../../auth/login/controller/login_controller.dart';
+
+class ProfileView extends ConsumerWidget {
+  const ProfileView({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isLoggedIn = ref.watch(loginControllerProvider.select((state) => state.isLoggedIn));
+    final userProfile = ref.watch(loginControllerProvider.select((state) => state.userProfile));
+
+    if (!isLoggedIn || userProfile == null) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Profile')),
+        body: Center(
+          child: Text(
+            'Please login first',
+            style: getTextStyle(fontSize: 16),
+          ),
+        ),
+      );
+    }
+
+    final user = userProfile!;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        centerTitle: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => context.pop(),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(24.w),
+          child: Column(
+            children: [
+              // Profile Avatar
+              CircleAvatar(
+                radius: 50.r,
+                backgroundColor: AppColors.primary,
+                child: Text(
+                  user.firstName!,
+                  style: getTextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.background,
+                  ),
+                ),
+              ),
+              SizedBox(height: 24.h),
+
+              // User Info
+              Text(
+                '${user.firstName} ${user.lastName}',
+                style: getTextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Text(
+                user.email,
+                style: getTextStyle(
+                  fontSize: 14,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              SizedBox(height: 32.h),
+
+              // Info Cards
+              Container(
+                padding: EdgeInsets.all(16.w),
+                decoration: BoxDecoration(
+                  color: AppColors.background,
+                  border: Border.all(color: AppColors.divider),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Column(
+                  children: [
+                    _buildInfoRow('Username', user.username),
+                    Divider(color: AppColors.divider, height: 16.h),
+                    _buildInfoRow('ID', user.id.toString()),
+                  ],
+                ),
+              ),
+              SizedBox(height: 40.h),
+
+              // Logout Button
+              CustomButton(
+                text: 'Logout',
+                onPressed: () {
+                  ref.read(loginControllerProvider.notifier).logout();
+                  context.go(AppRoutes.login);
+                },
+                isLoading: false,
+                isEnabled: true,
+                height: 56,
+                backgroundColor: AppColors.error,
+                textColor: AppColors.background,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: getTextStyle(
+            fontSize: 14,
+            color: AppColors.textSecondary,
+          ),
+        ),
+        Text(
+          value,
+          style: getTextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+============================================================
+
+
+============================================================
+FILE: lib\main.dart
+TYPE: Dart Source File
+SIZE: 0.74 KB
+============================================================
+
+// riverpod/lib/main.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_app/app.dart';
+import 'package:riverpod_app/core/config/env.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Lock screen to portrait mode only
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  const flavorString = String.fromEnvironment('FLAVOR', defaultValue: 'dev');
+  final flavor = AppFlavor.values.firstWhere((e) => e.name == flavorString);
+  await Env.load(flavor);
+  // await AppBootstrap.initialize();
+
+  runApp(const ProviderScope(child: App()));
+}
+
+============================================================
+
+
+============================================================
+FILE: pubspec.yaml
+TYPE: Dependencies & Config
+SIZE: 1.22 KB
+============================================================
+
+name: riverpod_app
+description: Generic reusable Flutter boilerplate
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'      # Fixes the "no lower-bound SDK constraint" error
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Routing
+  go_router: ^14.0.0
+
+  # Backend / Infra
+  supabase_flutter: ^2.5.0
+  firebase_core: ^3.0.0
+  firebase_messaging: ^15.0.0
+  firebase_analytics: ^11.0.0
+  firebase_crashlytics: ^4.0.0
+  flutter_branch_sdk: ^7.0.0
+
+  # Auth & Storage
+  local_auth: ^2.2.0
+  flutter_secure_storage: ^9.0.0
+
+  # Utils
+  flutter_dotenv: ^5.1.0
+  connectivity_plus: ^6.0.0
+  intl: ^0.20.2
+  logger: ^2.0.0
+  dio: ^5.4.0  # For ApiClient if you expand it later
+  easy_refresh: ^3.3.0
+  flutter_screenutil: ^5.9.0
+  google_fonts: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  riverpod_generator: ^2.4.0
+  build_runner: ^2.4.9
+  mocktail: ^1.0.3
+
+flutter:
+  uses-material-design: true
+  generate: true  # For riverpod_generator / intl
+
+  assets:
+    - .env.dev
+    - .env.staging
+    - .env.prod
+    - assets/images/
+    - assets/icons/
+
+============================================================
+
+
+============================================================
+FILE: tools\combine-files.dart
+TYPE: Dart Source File
+SIZE: 4.21 KB
+============================================================
+
+import 'dart:io';
+
+void main() {
+  print('🔄 Combining Flutter project files...');
+
+  final projectRoot = Directory.current.path;
+  final outputFile = '$projectRoot/tools/riverpod_combined.txt';
+
+  // Extensions we care about
+  final allowedExtensions = [
+    '.dart',
+    '.yaml',
+    '.yml',
+    '.json',
+    '.arb',
+    '.md',
+    '.example'
+  ];
+
+  // Folders to skip (platform-specific, builds, etc.)
+  final excludedFolders = [
+    '.dart_tool',
+    'build',
+    'android',
+    'ios',
+    'windows',
+    'linux',
+    'macos',
+    'web',
+    '.idea',
+    '.git',
+    'test',
+    'tests',
+    '__tests__'
+  ];
+
+  // Files to skip
+  final excludedFiles = [
+    '.DS_Store',
+    'pubspec.lock',
+    '.flutter-plugins',
+    '.flutter-plugins-dependencies',
+    '.metadata',
+    '.packages'
+  ];
+
+  // Always include these core files
+  final alwaysIncludeFiles = [
+    'pubspec.yaml',
+    'README.md',
+    '.env.example',
+    'analysis_options.yaml',
+    '.gitignore'
+  ];
+
+  // Collect files
+  final files = <Map<String, String>>[];
+  void collectFiles(Directory dir, String relativeBase) {
+    for (final entity in dir.listSync()) {
+      final relative = entity.path.substring(relativeBase.length + 1);
+
+      if (entity is Directory) {
+        if (excludedFolders.any((f) => relative.startsWith(f))) continue;
+        collectFiles(entity, relativeBase);
+        continue;
+      }
+
+      if (entity is File) {
+        if (excludedFiles.contains(entity.uri.pathSegments.last)) continue;
+
+        final ext =
+            entity.path.substring(entity.path.lastIndexOf('.')).toLowerCase();
+        final filename = entity.uri.pathSegments.last;
+
+        if (allowedExtensions.contains(ext) ||
+            alwaysIncludeFiles.contains(filename)) {
+          files.add({'path': entity.path, 'relative': relative});
+        }
+      }
+    }
+  }
+
+  collectFiles(Directory(projectRoot), projectRoot);
+
+  // Sort files
+  files.sort((a, b) => a['relative']!.compareTo(b['relative']!));
+
+  // Generate folder tree
+  String generateTree(String dirPath, String prefix) {
+    var tree = '';
+    final entities = Directory(dirPath).listSync()
+      ..sort((a, b) => a.path.compareTo(b.path));
+
+    for (var i = 0; i < entities.length; i++) {
+      final entity = entities[i];
+      final relative = entity.path.substring(projectRoot.length + 1);
+      if (excludedFolders.any((f) => relative.startsWith(f))) continue;
+
+      final isLast = i == entities.length - 1;
+      final connector = isLast ? '└── ' : '├── ';
+      tree += '$prefix$connector${entity.uri.pathSegments.last}\n';
+
+      if (entity is Directory) {
+        tree += generateTree(entity.path, prefix + (isLast ? '    ' : '│   '));
+      }
+    }
+    return tree;
+  }
+
+  // Detect type
+  String detectType(String filepath) {
+    final lower = filepath.toLowerCase();
+    if (lower.contains('/lib/features/')) return 'Feature Module';
+    if (lower.contains('/lib/core/')) return 'Core Layer';
+    if (lower.contains('/lib/data/')) return 'Data Layer';
+    if (lower.contains('/lib/domain/')) return 'Domain Layer';
+    if (lower == 'pubspec.yaml') return 'Dependencies & Config';
+    if (lower.endsWith('.arb')) return 'Localization';
+    if (lower.endsWith('.md')) return 'Documentation';
+    return 'Dart Source File';
+  }
+
+  // Build output content
+  var content = '''
+# M1 Mobile Flutter Boilerplate – Full Code Export
+Generated: ${DateTime.now().toIso8601String()}
+
+=========================================
+📂 PROJECT STRUCTURE
+=========================================
+
+${generateTree(projectRoot, '')}
+
+=========================================
+📦 SOURCE FILES
+=========================================
+
+''';
+
+  for (final file in files) {
+    final fileContent = File(file['path']!).readAsStringSync();
+    final sizeKB = (fileContent.length / 1024).toStringAsFixed(2);
+    final type = detectType(file['relative']!);
+
+    content += '''
+============================================================
+FILE: ${file['relative']}
+TYPE: $type
+SIZE: $sizeKB KB
+============================================================
+
+${fileContent.trim()}
+
+============================================================
+
+
+''';
+  }
+
+  File(outputFile).writeAsStringSync(content);
+  print('✅ Done! Output saved to: $outputFile');
+}
+
+// Run: dart tools/combine-files.dart
+
+============================================================
+
+

@@ -1,0 +1,5 @@
+// riverpod/lib/core/localization/locales/en.arb
+{
+  "appName": "M1 Mobile",
+  "login": "Login"
+}
