@@ -1,0 +1,5 @@
+// riverpod/lib/core/localization/locales/ko.arb
+{
+  "appName": "M1 모바일",
+  "login": "로그인"
+}
