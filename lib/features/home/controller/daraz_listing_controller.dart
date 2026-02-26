@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_app/core/network/api_client.dart';
-import 'package:riverpod_app/core/network/api_endpoints.dart';
-import '../model/product.dart';
+import '../repository/product_repository.dart';
 import 'daraz_listing_state.dart';
 
 final darazListingProvider =
@@ -19,10 +17,7 @@ class DarazListingController extends StateNotifier<DarazListingState> {
     state = state.copyWith(isLoading: true, clearError: true);
 
     try {
-      final response = await ApiClient.get(ApiEndpoints.productsEndpoint);
-      final products = (response.data as List)
-          .map((e) => Product.fromJson(e as Map<String, dynamic>))
-          .toList();
+      final products = await ProductRepository.fetchProducts();
 
       state = state.copyWith(
         products: products,
