@@ -43,16 +43,16 @@ jobs:
         run: flutter build apk --release
 
       # 7. Build iOS (unsigned, no codesign)
-      - name: Build iOS
-        run: flutter build ios --release --no-codesign
+      # - name: Build iOS
+      #   run: flutter build ios --release --no-codesign
 
       # 8. Package unsigned iOS IPA
-      - name: Package unsigned iOS IPA
-        run: |
-          cd build/ios/iphoneos
-          mkdir Payload
-          cp -r Runner.app Payload/
-          zip -r unsigned-app.ipa Payload
+      # - name: Package unsigned iOS IPA
+      #   run: |
+      #     cd build/ios/iphoneos
+      #     mkdir Payload
+      #     cp -r Runner.app Payload/
+      #     zip -r unsigned-app.ipa Payload
 
       # 9. Upload Android APK as artifact
       - name: Upload APK
@@ -62,11 +62,11 @@ jobs:
           path: build/app/outputs/flutter-apk/**/*.apk
 
       # 10. Upload iOS IPA as artifact
-      - name: Upload iOS IPA
-        uses: actions/upload-artifact@v4
-        with:
-          name: zavisoft-ios-ipa
-          path: build/ios/iphoneos/unsigned-app.ipa
+      # - name: Upload iOS IPA
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: zavisoft-ios-ipa
+      #     path: build/ios/iphoneos/unsigned-app.ipa
 
       # 11. Publish GitHub Release
       - name: Create Release

@@ -1,10 +1,12 @@
 import 'package:riverpod_app/core/network/api_client.dart';
 import 'package:riverpod_app/core/network/api_endpoints.dart';
-import 'package:dio/dio.dart';
+import 'package:riverpod_app/core/errors/error_handler.dart';
 import 'package:riverpod_app/features/auth/login/model/login_model.dart';
 
 class LoginRepository {
-  /// Login with username and password (Dummy credentials support)
+  /// Login with username and password (Dummy credentials support).
+  /// Returns [LoginResponse] on success.
+  /// Throws [Exception] with descriptive error message on failure.
   static Future<LoginResponse> login({
     required String username,
     required String password,
@@ -38,8 +40,9 @@ class LoginRepository {
       } else {
         throw Exception('Login failed: ${response.statusCode}');
       }
-    } on DioException catch (e) {
-      throw Exception('Login error: ${e.toString()}');
+    } catch (e) {
+      final failure = handleError(e);
+      throw Exception(failure.message);
     }
   }
 }
