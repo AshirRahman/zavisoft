@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'      # Fixes the "no lower-bound SDK constraint" error
+  sdk: '>=3.1.0 <4.0.0'
   flutter: '>=3.10.0'
 
 dependencies:
@@ -37,7 +37,7 @@ dependencies:
   connectivity_plus: ^6.0.0
   intl: ^0.20.2
   logger: ^2.0.0
-  dio: ^5.4.0  # For ApiClient if you expand it later
+  dio: ^5.4.0
   easy_refresh: ^3.3.0
   flutter_screenutil: ^5.9.0
   google_fonts: ^6.1.0
@@ -52,7 +52,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: true  # For riverpod_generator / intl
+  generate: true
 
   assets:
     - .env.dev

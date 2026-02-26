@@ -32,13 +32,13 @@ flutter run
 ## Screenshots
 
 ### Login Screen
-<img src="https://via.placeholder.com/375x812?text=Login+Screen" alt="Login Screen" width="300"/>
+<img src="assets/images/preview_1.png"  alt="Home Screen" width="300"/>
 
 ### Home Screen - Product Listing with Tabs
-<img src="https://via.placeholder.com/375x812?text=Home+Screen" alt="Home Screen" width="300"/>
+<img src="assets/images/preview_2.png" alt="Home Screen" width="300"/>
 
 ### Home Screen - Scrolled View
-<img src="https://via.placeholder.com/375x812?text=Home+Scrolled" alt="Home Scrolled" width="300"/>
+<img src="assets/images/preview_3.png" alt="Home Scrolled" width="300"/>
 
 ### Profile Screen
-<img src="https://via.placeholder.com/375x812?text=Profile+Screen" alt="Profile Screen" width="300"/>
+<img src="assets/images/preview_4.png" alt="Profile Screen" width="300"/>
