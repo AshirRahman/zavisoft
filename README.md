@@ -31,14 +31,23 @@ flutter run
 
 ## Screenshots
 
-### Login Screen
-<img src="assets/images/preview_1.png"  alt="Home Screen" width="300"/>
-
-### Home Screen - Product Listing with Tabs
-<img src="assets/images/preview_2.png" alt="Home Screen" width="300"/>
-
-### Home Screen - Scrolled View
-<img src="assets/images/preview_3.png" alt="Home Scrolled" width="300"/>
-
-### Profile Screen
-<img src="assets/images/preview_4.png" alt="Profile Screen" width="300"/>
+<table>
+  <tr>
+    <td>
+      <p>Login Screen</p>
+      <img src="assets/images/preview_1.png" alt="Login Screen" width="200"/>
+    </td>
+    <td>
+      <p>Home Screen - Product Listing</p>
+      <img src="assets/images/preview_2.png" alt="Home Screen" width="200"/>
+    </td>
+    <td>
+      <p>Home Screen - Scrolled View</p>
+      <img src="assets/images/preview_3.png" alt="Home Scrolled" width="200"/>
+    </td>
+    <td>
+      <p>Profile Screen</p>
+      <img src="assets/images/preview_4.png" alt="Profile Screen" width="200"/>
+    </td>
+  </tr>
+</table>
