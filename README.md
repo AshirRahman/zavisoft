@@ -26,3 +26,19 @@ flutter run
 
 ---
 **Note:** Some files, which are usually ignored in `.gitignore` (like `.env` files), have been intentionally included in this repository. This is done solely for the purpose of providing a complete project overview for review. This is not standard practice in a production or development environment.
+
+---
+
+## Screenshots
+
+### Login Screen
+<img src="https://via.placeholder.com/375x812?text=Login+Screen" alt="Login Screen" width="300"/>
+
+### Home Screen - Product Listing with Tabs
+<img src="https://via.placeholder.com/375x812?text=Home+Screen" alt="Home Screen" width="300"/>
+
+### Home Screen - Scrolled View
+<img src="https://via.placeholder.com/375x812?text=Home+Scrolled" alt="Home Scrolled" width="300"/>
+
+### Profile Screen
+<img src="https://via.placeholder.com/375x812?text=Profile+Screen" alt="Profile Screen" width="300"/>

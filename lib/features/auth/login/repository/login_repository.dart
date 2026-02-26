@@ -4,9 +4,7 @@ import 'package:riverpod_app/core/errors/error_handler.dart';
 import 'package:riverpod_app/features/auth/login/model/login_model.dart';
 
 class LoginRepository {
-  /// Login with username and password (Dummy credentials support).
-  /// Returns [LoginResponse] on success.
-  /// Throws [Exception] with descriptive error message on failure.
+  /// Login with username and password (Dummy credentials support)
   static Future<LoginResponse> login({
     required String username,
     required String password,
